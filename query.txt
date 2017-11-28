@@ -1,0 +1,98 @@
+create databases test;
+use test
+create table if not exists login( 
+        username           varchar(25),
+        password           varchar(20)
+        constraint primary key(username)
+);
+
+create table if not exists customer_details(
+        cust_username      varchar(30)         not null,
+        cust_name          varchar(30)         not null,
+        cust_id            int                 not null,
+        cust_mailid        varchar(30)         not null,
+        cust_address       varchar(30),
+        cust_phonum        varchar(20)        not null,
+        constraint primary key(cust_id),
+        constraint foreign key(cust_username) references login(username)
+);
+create table if not exists Eggcake_details(
+        product_name         varchar(30)       not null,
+        product_id           int               not null,
+        product_price        int               not null,
+        product_rating       int               not null,
+        constraint primary key(product_name)
+);
+create table if not exists cakeswithoutegg_details(
+        product_name         varchar(30)       not null,
+        product_id           int               not null,
+        product_price        int               not null,
+        product_rating       int               not null,
+        constraint primary key(product_name)
+);
+create table if not exists flavour_details(
+        flavour_name         varchar(30)       not null,
+        flavour_id           int               not null,
+        flavour_price        int               not null,
+        flavour_rating       int               not null,
+        constraint primary key(flavour_name)
+);
+
+create table if not exists dealer_details(
+       dealer_username       varchar(30)       not null,
+       dealer_name           varchar(30)       not null,
+       dealer_id             int               not null,
+       dealer_mailid         varchar(30)       not null,
+       dealer_phonum         varchar(30)       not null,
+       dealer_pincode        varchar(30)       not null
+       constraint primary key(dealer_id),
+       constraint foreign key(dealer_username)references login(username)
+);
+create table if not exists branch_details(
+       branch_id           int,
+       branch_name         varchar(30), 
+       branch_address      varchar(30),
+       constraint primary key(branch_id)
+);
+create table if not exists order_details(
+       order_id            varchar(30),
+       order               varchar(30),
+       payment_type        varchar(30)
+       constraint primary key(order_id)
+);
+create table if not exists card_details(
+       card_holder          varchar(20),
+       card_num             int,
+       expiry_date          varchar(20)
+);
+       
+insert into login values('janani','1234');
+insert into login values('bharani','5674');
+
+insert into customer_details values('janu','oviya',123,'oviya12@gmail.com','kce,myleripalaiyam,coimbatore','7708969966');
+insert into customer_details values('bharani','priya',456,'priya27@gmail.com','sk,kuniyamuthur,coimbatore','7708964666');
+
+insert into Eggcake_details values('cup cake',786,70,5);
+insert into Eggcake_details values('birthday cake',436,100,5);
+
+insert into flavour_details values('chocolate',76,70,5);
+insert into flavour_details values('venila',46,50,5);
+
+insert into branch_details values('904','heaven on earth cbe','coimbatore');
+insert into branch_details values('678','heaven on earth mad','madurai');
+
+insert into cakewithoutegg_details values('cup cake',767,70,5);
+insert into cakewithoutegg_details values('birthday cake',456,100,5);
+
+insert into dealer_details values('janani','bharani',986,'jan123@gmail.com','7373866521','608402');
+
+insert into order_details values('4673','birthday cakes','creditcard');
+
+insert into card_details values('bagadesh',345312,'12.11.2017');
+insert into card_details values('rakesh',7865432,'10.08.2017');
+
+
+
+
+
+     
